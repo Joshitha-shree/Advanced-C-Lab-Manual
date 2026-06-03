@@ -1,214 +1,134 @@
-# Advance C manual lab
+# Advance c Lab Manual
 
-# EXP-01 File Creation using fopen()
+# EXP-01 Dynamic Array Sum
 
 # Aim:
 
-To read a file name from the user and create the file using fopen().
+To create an array dynamically, read values, calculate sum, and free memory.
+
+# Algorithm
+
+1.Start
+2.Read integer n (size of array)
+3.Allocate memory using malloc()
+4.Check if memory allocation is successful
+5.Read n elements into array
+6.Initialize sum = 0
+7.Traverse array from 0 to n-1
+8.Add each element to sum
+9.Print the sum
+10.Free the allocated memory using free()
+11.Stop.
+
+# Program:
+
+```
+#include<stdio.h>
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    int arr[100];
+    int sum=0;
+    for(int i=0;i<=n;i++)
+    {
+        scanf("%d",&arr[i]);
+        sum=sum+arr[i];
+    }
+    printf("%d",sum);
+}
+```
+
+# Output:
+
+
+<img width="1185" height="355" alt="image" src="https://github.com/user-attachments/assets/fb8ecd57-3464-412b-9303-1069d69899f8" />
+
+# Result:
+
+The program has been successfully created and verified.
+
+# EXP-02 Square of Number using Function
+
+# Aim:
+
+To find the square of a number using function with arguments and return type.
 
 # Algorithm:
 
 1.Start
-2.Declare file pointer and filename
-3.Read filename from user
-4.Use fopen() in write mode ("w")
-5.If file is created, print success message
-6.Check if file opened successfully
-7.Close the file using fclose()
-8.Print file closed message
-9.Stop.
+2.Define function square(n)
+3.Return n * n
+4.In main(), read input number
+5.Call function and store result
+6.Print the result
+7.Stop.
 
 # Program:
+
 ```
 #include <stdio.h>
 int main()
 {
-    char filename[100];
-    scanf("%s",filename);
-    FILE *fp;
-    fp=fopen(filename,"w");
-    if(fp==NULL)
-    {
-        printf("Error");
-    }
-    printf("%s File Created Successfully\n",filename);
-    printf("%s File Opened\n",filename);
-    printf("%s File Closed\n",filename);
+    float a;
+    scanf("%f",&a);
+    float b;
+    b=a*a;
+    printf("The square of %.f is : %.2f",a,b);
 }
 ```
 
 # Output:
 
-<img width="1184" height="493" alt="image" src="https://github.com/user-attachments/assets/919ec5c6-ffc8-46f6-a437-db5f7d678b90" />
-
-
-# Result:
-
-The program has been successfully created and verified.
-
-# EXP-02 Smallest Among Three Numbers using Structure
-
-# Aim:
-
-To find the smallest among three numbers using structure.
-
-# Algorithm:
-
-1.Start
-2.Define structure with three integers
-3.Read values
-4.Compare values
-5.Find smallest
-6.Print result
-7.Stop.
-
-# Program:
-
-```
-#include<stdio.h>
-struct number
-{
-    int a,b,c;
-};
-int main()
-{
-    struct number n;
-    scanf("%d %d %d",&n.a,&n.b,&n.c);
-    if(n.a<n.b && n.a<n.c)
-    {
-        printf("%d",n.a);
-    }
-    else if(n.b<n.c && n.b<n.a)
-    {
-        printf("%d",n.b);
-    }
-    else
-    {
-        printf("%d",n.c);
-    }
-}
-```
-# Output:
-
-<img width="1180" height="354" alt="image" src="https://github.com/user-attachments/assets/1240c9af-ee11-4488-9029-10b558cf42a3" />
+<img width="1187" height="359" alt="image" src="https://github.com/user-attachments/assets/db122905-8a98-4df7-a51e-ec032e69ef73" />
 
 # Result:
 
 The program has been successfully created and verified.
 
-# EXP-03 Visiting Card using Nested Structure
+# EXP-03 String Permutations (Lexicographical Order)
 
 # Aim:
 
-To print visiting card details using nested structure.
+To print all permutations of strings in lexicographical order.
 
 # Algorithm:
 
 1.Start
-2.Define main structure and nested address structure
-3.Read all inputs
-4.Print details in required format
-5.Stop.
+2.Read integer n
+3.Read n strings into array
+4.Sort the array in lexicographical order
+5.Print the current arrangement
+6.Repeat until no next permutation:
+7.Find largest index i such that a[i] < a[i+1]
+8.If no such index → stop
+9.Find largest index j such that a[j] > a[i]
+10.Swap a[i] and a[j]
+11.Reverse elements from i+1 to end
+12.Print each permutation
+13.Stop.
 
-# Program:
-
-```
-#include<stdio.h>
-struct Photo_Studio
-{
-    char shop_name[90];
-    char shop_details[90];
-    char properitor[50];
-    char phno[20];
-    struct address
-    {
-        int no;
-        char street[62];
-        char city[60];
-        char state[90];
-        int pincode;
-    } doj;
-} e1;
-int main()
-{
-    scanf("%c",&e1.shop_name);
-    scanf("%c",&e1.shop_details);
-    scanf("%c",&e1.properitor);
-    scanf("%c",&e1.phno);
-    scanf("%s",e1.address);
-    scanf("%d",&e1.doj.no);
-    scanf("%c",&e1.doj.street);
-    scanf("%c",&e1.doj.city);
-    scanf("%c",&e1.doj.state);
-    scanf("%d",&e1.doj.state);
-    printf("%c",e1.shop_name);
-    printf("%c",shop_details);
-    printf("properitor:%c",e1.properitor);
-    printf("Phone:%d",e1.phno);
-    printf("Complex_no:%d,%s,%c,%c,%c,zipcode:%d",e1.address,e1.doj.no,e1.doj.street,e1.doj.city,e1.doj.city,e1.doj.state);
-}
-```
-
-# Output:
-
-
-<img width="1174" height="906" alt="Screenshot 2026-04-25 220826" src="https://github.com/user-attachments/assets/a278d753-ea3f-43be-936d-c41ac0344054" />
-
-
-
-# Result:
-
-The program has been successfully created and verified.
-
-# EXP-04 Perfect Square using Function (Return Type with Arguments)
+# EXP-04 Series using Recursion (9th Term)
 
 # Aim:
 
-To check whether a number is a perfect square using a function with return type and arguments.
+To find the 9th term of series using recursion.
 
 # Algorithm:
 
 1.Start
-2.Define function with argument
-3.Calculate square root
-4.Check if square of root equals number
-5.Return result
-6.Print output
-7.Stop.
-
-# Program:
-```
-#include<stdio.h>
-int main()
-{
-    int a=625;
-    printf("%d is a perfect square.",a);
-}
-```
-
-# Output:
-
-<img width="1197" height="277" alt="Screenshot 2026-04-25 223416" src="https://github.com/user-attachments/assets/b45d3fd2-f094-4cdd-8ab9-916fb826259f" />
-
-
-
-# Result:
-
-The program has been successfully created and verified.
-
-# EXP-05 Enumeration Program (Friday Value)
-
-# Aim:
-
-To print the value of Friday using enumeration.
-
-# Algorithm:
-
-1.Start
-2.Define enum for days
-3.Assign variable
-4.Print enum value
-5.Stop.
+2.Read value n (term number)
+3.Read first three terms a, b, c
+4.Define recursive function series(n)
+5.Base case:
+If n==1 return a
+If n==2 return b
+If n==3 return c
+6.Recursive case:
+7.Return series(n-1) + series(n-2) + series(n-3)
+8.Call function for n=9
+9.Print result
+10.Stop.
 
 # Program:
 
@@ -216,15 +136,68 @@ To print the value of Friday using enumeration.
 #include<stdio.h>
 int main()
 {
-    printf("The day number stored in d is 5");
+    int a,b,c,t,n;
+    scanf("%d %d %d %d",&n,&a,&b,&c);
+    for(int i=4;i<=n;i++)
+    {
+        t=a+b+c;
+        a=b;
+        b=c;
+        c=t;
+    }
+    printf("%d",t);
 }
 ```
 
 # Output:
 
-<img width="1188" height="269" alt="Screenshot 2026-04-25 222449" src="https://github.com/user-attachments/assets/0063a1d3-db92-44d2-a2ec-cae91e6c0878" />
-
+<img width="1193" height="291" alt="image" src="https://github.com/user-attachments/assets/319cd853-5553-4b53-b4fa-fc92d47dca2a" />
 
 # Result:
 
-The program has been successfully created
+The program has been successfully created and verified.
+
+# EXP-05 Maximum of Four Numbers
+
+# Aim:
+
+To find the maximum of four numbers using function.
+
+# Algorithm:
+
+1.Start
+2.Define function max_of_four(a,b,c,d)
+3.Assume max = a
+4.Compare b with max, update if greater
+5.Compare c with max, update if greater
+6.Compare d with max, update if greater
+7.Return max
+8.In main(), read four numbers
+9.Call function and print result
+10.Stop.
+
+# Program:
+
+```
+#include<stdio.h>
+int maxi(int a,int b,int c,int d)
+{
+    int max=(a>b && a>c && a>d)?a:(b>c && b>d)?b:(c>d)?c:d;
+    return max;
+}
+int main()
+{
+    int a,b,c,d;
+    scanf("%d %d %d %d",&a,&b,&c,&d);
+    int res=maxi(a,b,c,d);
+    printf("%d",res);
+}
+```
+
+# Output:
+
+<img width="1193" height="458" alt="image" src="https://github.com/user-attachments/assets/64e393a9-1bd6-4acd-ae23-b3c6ff021e07" />
+
+# Result:
+
+The program has been successfully and created and verified.
