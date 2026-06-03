@@ -1,206 +1,226 @@
 # Advance C Lab Manual
 
-# EXP-01 Hello World Program
+# EXP-01 Delete Element in Queue using Linked List (Dequeue)
 
 # Aim:
 
-To write a program to print "Hello, World!".
+To write a function to delete an element from a queue implemented using a linked list.
 
 # Algorithm:
 
 1.Start
-2.Use print statement to display "Hello, World!"
+2.Check if front == NULL
+If true, print "Queue Underflow"
+Else:
+Store front in a temporary node temp
+Move front = front->next
+If front == NULL, set rear = NULL
+Free temp
 3.Stop.
 
 # Program:
 
 ```
-#include <stdio.h>
-int main()
+struct Node
 {
-    printf("Hello, World!");
-}
-```
-
-# Output:
-
-<img width="1180" height="264" alt="image" src="https://github.com/user-attachments/assets/420f9c9f-194c-4b35-ac5f-d8f5cdf46118" />
-
-# Result:
-
-The program has been successfully created and verified.
-
-# EXP-02 Sum of Digits of a Five-Digit Number
-
-# Aim:
-
-To write a program to find the sum of digits of a given five-digit integer.
-
-# Algorithm:
-
-1.Start
-2.Read integer n
-3.Initialize sum = 0
-4.Repeat until n > 0:
-5.Get last digit: digit = n % 10
-6.Add to sum: sum = sum + digit
-7.Remove last digit: n = n / 10
-8.Print sum
-9.Stop.
-
-# Program:
-
-```
-#include<stdio.h>
-int main()
+   int data;
+   struct Node *next;
+}*front=NULL,*rear=NULL;
+void dequeue()
 {
-    int a;
-    scanf("%d",&a);
-    int c=0,f;
-    while(a!=0)
+    if(front==NULL)
     {
-        f=a%10;
-        c=c+f;
-        a=a/10;
+        printf("Queue is Empty!!!\n");
+        return;
     }
-    printf("%d",c);
+    front=front->next;
 }
 ```
 
 # Output:
 
-<img width="1183" height="356" alt="image" src="https://github.com/user-attachments/assets/7bbab3a4-e54b-45ca-aa9d-6acf9da64c61" />
+<img width="1185" height="864" alt="image" src="https://github.com/user-attachments/assets/636d21a3-0cb2-429c-847f-f6923c26172a" />
 
 # Result:
 
 The program has been successfully created and verified.
 
-# EXP-03 Number Pattern (Example: Input = 4)
+# EXP-02 Insert Element in Queue using Linked List (Enqueue)
 
 # Aim:
 
-To print a square number pattern from n to 1 in a symmetric format.
+To write a function to insert elements into a queue using a linked list.
 
 # Algorithm:
 
 1.Start
-2.Read integer n
-3.Set size = 2*n - 1
-Loop i from 0 to size-1:
-Loop j from 0 to size-1:
-
-4.Find minimum distance:
-
-value = n - min(min(i, j), min(size-1-i, size-1-j))
-5.Print value
-6.Move to next line after each row
-7.Stop.
-
-# Program:
-
-```
-#include<stdio.h>
-int main()
-{
-    int a;
-    scanf("%d",&a);
-    int size=2*a-1;
-    for(int i=0;i<size;i++)
-    {
-        for(int j=0;j<size;j++)
-        {
-            int min=i<j?i:j;
-            min=min<size-i?min:size-i-1;
-            min=min<size-j?min:size-j-1;
-            printf("%d ",a-min);
-        }
-        printf("\n");
-    }
-}
-```
-
-# Output:
-
-<img width="1186" height="788" alt="image" src="https://github.com/user-attachments/assets/472afc47-affc-4ede-a79d-e5afae44b27b" />
-
-# Result:
-
-The program has been successfully created and verified.
-
-# EXP-04 Number Pattern (Example: Input = 5)
-
-# Aim:
-
-To print a symmetric number pattern from n to 1 and back to n.
-
-# Algorithm:
-
-1.Start
-2.Read integer n
-3.Calculate size = 2*n - 1
-4.For each row i from 0 to size-1:
-5.For each column j from 0 to size-1:
-
-# Compute:
-
-1.value = n - min(min(i, j), min(size-1-i, size-1-j))
-2.Print value
-3.Print newline after each row
+2.Create a new node
+3.Assign data to the node
+Set new->next = NULL
+If rear == NULL:
+Set front = rear = new
+Else:
+Set rear->next = new
+Move rear = new
 4.Stop.
 
 # Program:
 
 ```
-#include<stdio.h>
-int main()
+struct Node
 {
-    int a;
-    scanf("%d",&a);
-    int size=2*a-1;
-    for(int i=0;i<size;i++)
+   int data;
+   struct Node *next;
+}*front=NULL,*rear=NULL;
+void enqueue(int data)
+{
+    struct Node *newnode=malloc(sizeof(struct Node));
+    newnode->data=data;
+    newnode->next=NULL;
+    if(front==NULL)
     {
-        for(int j=0;j<size;j++)
-        {
-            int min=i<j?i:j;
-            min=min<size-i?min:size-i-1;
-            min=min<size-j?min:size-j-1;
-            printf("%d ",a-min);
-        }
-        printf("\n");
+        front=rear=newnode;
+        return;
     }
+    rear->next=newnode;
+    rear=newnode;
 }
 ```
 
 # Output:
 
-<img width="1180" height="683" alt="image" src="https://github.com/user-attachments/assets/d551ab7c-e073-48a7-af8a-0bd317ce9e64" />
+<img width="1182" height="640" alt="image" src="https://github.com/user-attachments/assets/b6490a0b-b7fb-4212-82c7-b3fda1b996bb" />
 
 # Result:
 
 The program has been successfully created and verified.
 
-# EXP-05 Frequency of Digits in a String
+# EXP-03 Push Element in Stack using Linked List
 
 # Aim:
 
-To find and print the frequency of digits (0–9) in a given string.
+To write a function to push an element into a stack using a linked list.
 
 # Algorithm:
 
 1.Start
-2.Read input string s
-3.Initialize an array freq[10] = {0}
-4.For each character ch in string:
-If ch is a digit (0–9):
-Convert to integer: digit = ch - '0'
-Increment freq[digit]
-5.Print all elements of freq from index 0 to 9
-6.Stop.
+2.Create a new node
+3.Assign data to the node
+Set new->next = head
+Update head = new
+4.Stop.
 
 # Program:
 
+```
+struct Node   
+{  
+float data;  
+struct Node *next;  
+}*head;
+void push(int data)  
+{  
+    struct Node *newnode=malloc(sizeof(struct Node));
+    newnode->data=data;
+    newnode->next=head;
+    if(head==NULL)
+    {
+        head=newnode;
+        return;
+    }
+    head=newnode;
+}
+```
+
 # Output:
+
+<img width="1185" height="678" alt="image" src="https://github.com/user-attachments/assets/75405d11-f338-430a-9f98-d6c8788e4dc3" />
 
 # Result:
 
-The program has been successfully created and verif
+The program has been successfully created and verified.
+
+# EXP-04 Addition of Two Numbers using Pointers
+
+# Aim:
+
+To write a C program to add two numbers using pointers.
+
+# Algorithm:
+
+1.Start
+2.Declare two integers x and y
+3.Declare pointers p and q
+4.Assign addresses:
+p = &x
+q = &y
+5.Read values of x and y
+6.Calculate sum:
+sum = *p + *q
+7.Print sum
+8.Stop.
+
+# Program:
+
+```
+#include<stdio.h>
+int main()
+{
+    int x,y,z;
+    scanf("%d %d",&x,&y);
+    z=x+y;
+    printf("%d",z);
+}
+```
+
+# Output:
+
+<img width="1184" height="358" alt="image" src="https://github.com/user-attachments/assets/c7a53e7e-2b75-407a-99eb-52abdeb2cf71" />
+
+# Result:
+
+The program has been successfully created and verified.
+
+# EXP-05 Pop Element from Stack using Linked List
+
+# Aim:
+
+To write a function to remove (pop) an element from a stack using a linked list.
+
+# Algorithm:
+
+1.Start
+2.Check if head == NULL
+If true, print "Stack Underflow"
+Else:
+Store head in temporary node temp
+Move head = head->next
+Free temp
+3.Stop.
+
+# Program:
+
+```
+struct Node   
+{  
+int data;  
+struct Node *next;  
+}*head;  
+void pop()  
+{ 
+    if(head==NULL)
+    {
+        printf("stack is empty");
+        return;
+    }
+    head=head->next;
+}
+```
+
+# Output:
+
+<img width="1188" height="411" alt="image" src="https://github.com/user-attachments/assets/2cd6c008-59b3-4008-b3b3-8d7467550b9a" />
+
+# Result:
+
+The program has been successfully created and verified
