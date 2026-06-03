@@ -1,203 +1,214 @@
-# Advance c Lab Manual
+# Advance C Lab Manual
 
-# EXP-01 Dynamic Array Sum
+# EXP-01 Stack Display Using Array
 
 # Aim:
 
-To create an array dynamically, read values, calculate sum, and free memory.
+To write a function to display elements of a stack implemented using an array.
 
 # Algorithm
-
 1.Start
-2.Read integer n (size of array)
-3.Allocate memory using malloc()
-4.Check if memory allocation is successful
-5.Read n elements into array
-6.Initialize sum = 0
-7.Traverse array from 0 to n-1
-8.Add each element to sum
-9.Print the sum
-10.Free the allocated memory using free()
-11.Stop.
-
-# Program:
-
-```
-#include<stdio.h>
-int main()
-{
-    int n;
-    scanf("%d",&n);
-    int arr[100];
-    int sum=0;
-    for(int i=0;i<=n;i++)
-    {
-        scanf("%d",&arr[i]);
-        sum=sum+arr[i];
-    }
-    printf("%d",sum);
-}
-```
-
-# Output:
-
-
-<img width="1185" height="355" alt="image" src="https://github.com/user-attachments/assets/fb8ecd57-3464-412b-9303-1069d69899f8" />
-
-# Result:
-
-The program has been successfully created and verified.
-
-# EXP-02 Square of Number using Function
-
-# Aim:
-
-To find the square of a number using function with arguments and return type.
-
-# Algorithm:
-
-1.Start
-2.Define function square(n)
-3.Return n * n
-4.In main(), read input number
-5.Call function and store result
-6.Print the result
+2.Initialize top = -1
+3.Check if top == -1
+4.If true, print "Stack is empty"
+5.Else, repeat from i = top to 0:
+6.Print stack[i]
 7.Stop.
 
 # Program:
 
 ```
-#include <stdio.h>
-int main()
+int top=-1;
+float stack[100];
+void display()
 {
-    float a;
-    scanf("%f",&a);
-    float b;
-    b=a*a;
-    printf("The square of %.f is : %.2f",a,b);
-}
-```
-
-# Output:
-
-<img width="1187" height="359" alt="image" src="https://github.com/user-attachments/assets/db122905-8a98-4df7-a51e-ec032e69ef73" />
-
-# Result:
-
-The program has been successfully created and verified.
-
-# EXP-03 String Permutations (Lexicographical Order)
-
-# Aim:
-
-To print all permutations of strings in lexicographical order.
-
-# Algorithm:
-
-1.Start
-2.Read integer n
-3.Read n strings into array
-4.Sort the array in lexicographical order
-5.Print the current arrangement
-6.Repeat until no next permutation:
-7.Find largest index i such that a[i] < a[i+1]
-8.If no such index → stop
-9.Find largest index j such that a[j] > a[i]
-10.Swap a[i] and a[j]
-11.Reverse elements from i+1 to end
-12.Print each permutation
-13.Stop.
-
-# EXP-04 Series using Recursion (9th Term)
-
-# Aim:
-
-To find the 9th term of series using recursion.
-
-# Algorithm:
-
-1.Start
-2.Read value n (term number)
-3.Read first three terms a, b, c
-4.Define recursive function series(n)
-5.Base case:
-If n==1 return a
-If n==2 return b
-If n==3 return c
-6.Recursive case:
-7.Return series(n-1) + series(n-2) + series(n-3)
-8.Call function for n=9
-9.Print result
-10.Stop.
-
-# Program:
-
-```
-#include<stdio.h>
-int main()
-{
-    int a,b,c,t,n;
-    scanf("%d %d %d %d",&n,&a,&b,&c);
-    for(int i=4;i<=n;i++)
+    if(top==-1)
     {
-        t=a+b+c;
-        a=b;
-        b=c;
-        c=t;
+        printf("no elements");
+        return;
     }
-    printf("%d",t);
+    for(int i=top;i>=0;i--)
+    {
+        printf("%.1f\n",stack[i]);
+    }
 }
 ```
 
 # Output:
 
-<img width="1193" height="291" alt="image" src="https://github.com/user-attachments/assets/319cd853-5553-4b53-b4fa-fc92d47dca2a" />
+<img width="1182" height="640" alt="image" src="https://github.com/user-attachments/assets/d62feb06-c6ff-428f-97e4-ab2a9833857c" />
 
 # Result:
 
 The program has been successfully created and verified.
 
-# EXP-05 Maximum of Four Numbers
+# EXP-02 Queue Insertion (Enqueue) Using Array
 
 # Aim:
 
-To find the maximum of four numbers using function.
+To write a function to insert elements into a queue using an array.
 
 # Algorithm:
 
 1.Start
-2.Define function max_of_four(a,b,c,d)
-3.Assume max = a
-4.Compare b with max, update if greater
-5.Compare c with max, update if greater
-6.Compare d with max, update if greater
-7.Return max
-8.In main(), read four numbers
-9.Call function and print result
-10.Stop.
+2.Initialize front = -1, rear = -1
+3.When inserting an element:
+4.If rear == MAX-1, print "Queue Overflow"
+Else:
+If front == -1, set front = 0
+Increment rear
+7.Insert element at queue[rear]
+8.Stop.
 
 # Program:
 
 ```
-#include<stdio.h>
-int maxi(int a,int b,int c,int d)
+int queue[50];
+int top=-1,rear,front;
+void enqueue(int data)
 {
-    int max=(a>b && a>c && a>d)?a:(b>c && b>d)?b:(c>d)?c:d;
-    return max;
-}
-int main()
-{
-    int a,b,c,d;
-    scanf("%d %d %d %d",&a,&b,&c,&d);
-    int res=maxi(a,b,c,d);
-    printf("%d",res);
+    if(front==-1)
+    {
+        front=0;
+    }
+    rear++;
+    queue[rear]=data;
 }
 ```
 
 # Output:
 
-<img width="1193" height="458" alt="image" src="https://github.com/user-attachments/assets/64e393a9-1bd6-4acd-ae23-b3c6ff021e07" />
+<img width="1187" height="574" alt="image" src="https://github.com/user-attachments/assets/4309a1fc-c4b7-49af-b7a2-0cd3beaf0537" />
 
 # Result:
 
-The program has been successfully and created and verified.
+The program has been successfully created and verified.
+
+# EXP-03 Stack Push Operation Using Array
+
+# Aim:
+
+To write a function to push an element into a stack using an array.
+
+# Algorithm:
+
+1.Start
+2.Initialize top = -1
+3.When pushing an element:
+4.If top == MAX-1, print "Stack Overflow"
+Else:
+Increment top
+Assign stack[top] = element
+5.Stop.
+
+# Program:
+
+```
+int size=3,top=-1;
+char stack[100];
+void push (char data)
+{
+    if(top==size-1)
+    {
+        printf("stack is full\n");
+        return;
+    }
+    stack[++top]=data;
+}
+```
+
+# Output:
+
+<img width="1189" height="665" alt="image" src="https://github.com/user-attachments/assets/2afaa10c-d15f-434b-94eb-54256e6ed345" />
+
+# Result:
+
+The program has been successfully created and verified.
+
+# EXP-04 Addition Table Using For Loop
+
+# Aim:
+
+To write a C program to print the addition table of a given number using a for loop.
+
+# Algorithm:
+
+1.Start
+2.Read the number n
+3.Use a for loop from i = 1 to n:
+4.Print n + i
+5.Stop.
+
+# Program:
+
+```
+#include<stdio.h>
+int main()
+{
+    int a;
+    scanf("%d",&a);
+    int sum=0;
+    for(int i=a;i<11;i++)
+    {
+        sum=sum+1;
+        printf("%d ",sum);
+    }
+}
+```
+
+# Output:
+
+<img width="1178" height="350" alt="image" src="https://github.com/user-attachments/assets/217596f5-aaf5-41c5-904f-2d4e99664244" />
+
+# Result:
+
+The program has been successfully created and verified.
+
+# EXP-05 Queue Deletion (Dequeue) Using Array
+
+# Aim:
+
+To write a function to delete elements from a queue using an array.
+
+# Algorithm:
+
+1.Start
+2.Check if front == -1 OR front > rear:
+If true, print "Queue Underflow"
+Else:
+Remove element at queue[front]
+3.Increment front
+4.If front > rear:
+Reset front = rear = -1
+5.Stop.
+
+# Program:
+
+```
+int queue[50];
+int front, rear;
+void dequeue()
+{
+    if(front==-1 && rear==-1)
+    {
+        printf("no elemets");
+    }
+    else if(front==rear)
+    {
+        front=-1;
+        rear=-1;
+    }
+    else
+    {
+        ++front;
+    }
+}
+```
+
+# Output:
+
+<img width="1190" height="765" alt="image" src="https://github.com/user-attachments/assets/89cde70a-8112-4aa3-9b08-a11c679b04d3" />
+
+# Result:
+
+The program has been successfully created and verified.
