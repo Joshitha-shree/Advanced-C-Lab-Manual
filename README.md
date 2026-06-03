@@ -1,132 +1,52 @@
 # Advance C Lab Manual
 
-# EXP-01 Delete an Element in Doubly Linked List
+# EXP-01 Hello World Program
 
 # Aim:
 
-To write a function to delete a node from a doubly linked list.
+To write a program to print "Hello, World!".
 
 # Algorithm:
 
 1.Start
-2.Check if head == NULL
-3.If true, print "UNDERFLOW"
-Else:
-Store head in a temporary pointer temp
-Move head = head->next
-4.If head != NULL, set head->prev = NULL
-Free temp
-Print "Node deleted"
-5.Stop.
+2.Use print statement to display "Hello, World!"
+3.Stop.
 
 # Program:
 
 ```
-struct Node
+#include <stdio.h>
+int main()
 {
-    struct Node *prev;
-    struct Node *next;
-    int data;
-}*head;
-
-void delete()
-{
-    struct Node *temp=head;
-    if(head==NULL)
-    {
-        printf("UNDERFLOW");
-        return;
-    }
-    temp=head;
-    head=head->next;
-    if(head!=NULL)
-    {
-        head->prev=NULL;
-    }
-    free(temp);
-    printf("node deleted\n");
-    
-    
-    
+    printf("Hello, World!");
 }
 ```
 
 # Output:
 
-<img width="1179" height="784" alt="image" src="https://github.com/user-attachments/assets/31642fdb-25e1-41cc-9c95-1f3b9a345943" />
-
-
-# Result:
-
-The program has been successfully created and verified.
-
-# EXP-02 Traverse and Display Linked List
-
-# Aim:
-
-To write a function to traverse and display elements of a linked list.
-
-# Algorithm:
-
-1.Start
-2.Check if head == NULL
-3.If true, print "List is empty"
-Else:
-Set temp = head
-While temp != NULL:
-Print temp->data
-Move temp = temp->next
-4.Stop.
-
-# Program:
-
-```
-struct Node{
-    float data; 
-    struct Node *next;
-}*head;
-
-
-void display()
-{
-    struct Node *temp=head;
-    if(head==NULL)
-    {
-        return;
-    }
-    while(temp!=NULL)
-    {
-        printf("%.2f\n",temp->data);
-        temp=temp->next;
-    }
- 
- 
- 
- }
-```
-
-# Output:
-
-<img width="1186" height="642" alt="image" src="https://github.com/user-attachments/assets/e7befd7b-1840-48ed-8a9b-12e30a2fcf7d" />
+<img width="1180" height="264" alt="image" src="https://github.com/user-attachments/assets/420f9c9f-194c-4b35-ac5f-d8f5cdf46118" />
 
 # Result:
 
 The program has been successfully created and verified.
 
-# EXP-03 Print Numbers from M to N in Reverse Order
+# EXP-02 Sum of Digits of a Five-Digit Number
 
 # Aim:
 
-To write a C program to print numbers from M to N in reverse order.
+To write a program to find the sum of digits of a given five-digit integer.
 
 # Algorithm:
 
 1.Start
-2.Read values M and N
-3.Use a loop from i = N down to M:
-Print i
-4.Stop.
-<img width="1181" height="316" alt="image" src="https://github.com/user-attachments/assets/cefb308f-8430-4e44-b279-ac55f574695e" />
+2.Read integer n
+3.Initialize sum = 0
+4.Repeat until n > 0:
+5.Get last digit: digit = n % 10
+6.Add to sum: sum = sum + digit
+7.Remove last digit: n = n / 10
+8.Print sum
+9.Stop.
 
 # Program:
 
@@ -134,175 +54,153 @@ Print i
 #include<stdio.h>
 int main()
 {
-    int a,b;
-    scanf("%d%d",&a,&b);
-    for(int i=b;i>=a;i--)
+    int a;
+    scanf("%d",&a);
+    int c=0,f;
+    while(a!=0)
     {
-        printf("%d ",i);
+        f=a%10;
+        c=c+f;
+        a=a/10;
     }
+    printf("%d",c);
 }
 ```
 
 # Output:
 
-<img width="1181" height="316" alt="Screenshot 2026-04-26 213923" src="https://github.com/user-attachments/assets/f7174bf0-372e-4584-9bcd-856fbb115245" />
-
-# Result:
-
-The program has been succesfully created and verified.
-
-# EXP-04 All Basic Operations in Doubly Linked List
-
-# Aim:
-
-To write functions to perform insertion, deletion, searching, and display in a doubly linked list.
-
-# Algorithm:
-
-# Insertion
-
-1.Start
-2.Create a new node
-3.Assign data to the node
-4.Set new->next = NULL
-If head == NULL:
-Set new->prev = NULL
-Set head = new
-Else:
-Traverse to last node
-Set last node’s next = new
-Set new->prev = last node
-5.Stop.
-
-# Display:
-
-1.Start
-2.Set temp = head
-While temp != NULL:
-Print temp->data
-Move temp = temp->next
-3.Stop.
-
-# Search:
-
-1.Start
-2.Set temp = head, pos = 1
-While temp != NULL:
-If temp->data == item:
-Print position
-3.Stop
-Move temp = temp->next, increment pos
-If not found, print "Item not found"
-4.Stop.
-
-# Deletion:
-
-1.Start
-2.If head == NULL:
-Print "UNDERFLOW"
-Else:
-Delete first node (same as previous delete algorithm)
-3.Stop.
-
-# Program:
-
-```
-struct Node
-{
-    struct Node *prev;
-    struct Node *next;
-    float data;
-}*head;
-
-void display()
-{
-    
-    
-    
-}
-
-void insert(float data)
-{
-    
-    
-    
-}
-
-void search(float data)
-{
-    
-    
-    
-}
-
-void delete()
-{
-    
-    
-}
-```
-
-# Output:
-
-<img width="1193" height="856" alt="image" src="https://github.com/user-attachments/assets/e39d8b57-8243-4b0b-8b65-8decff5e13a4" />
+<img width="1183" height="356" alt="image" src="https://github.com/user-attachments/assets/7bbab3a4-e54b-45ca-aa9d-6acf9da64c61" />
 
 # Result:
 
 The program has been successfully created and verified.
 
-# EXP-05 Insert a Node in Linked List
+# EXP-03 Number Pattern (Example: Input = 4)
 
 # Aim:
 
-To write a function to insert a node into a linked list.
+To print a square number pattern from n to 1 in a symmetric format.
 
 # Algorithm:
 
 1.Start
-2.Create a new node
-3.Assign data to the node
-Set new->next = NULL
-If head == NULL:
-Set head = new
-Else:
-Traverse to last node
-Set last node’s next = new
-4.Stop.
+2.Read integer n
+3.Set size = 2*n - 1
+Loop i from 0 to size-1:
+Loop j from 0 to size-1:
+
+4.Find minimum distance:
+
+value = n - min(min(i, j), min(size-1-i, size-1-j))
+5.Print value
+6.Move to next line after each row
+7.Stop.
 
 # Program:
 
 ```
-struct Node{
-    int data; 
-    struct Node *next;
-}*head;
-
-
-void insert(int data)
+#include<stdio.h>
+int main()
 {
-    struct Node *temp=head;
-    struct Node *newnode=malloc(sizeof(struct Node));
-    newnode->data=data;
-    newnode->next=NULL;
-    
-    if(head==NULL)
+    int a;
+    scanf("%d",&a);
+    int size=2*a-1;
+    for(int i=0;i<size;i++)
     {
-        head=newnode;
-        return;
+        for(int j=0;j<size;j++)
+        {
+            int min=i<j?i:j;
+            min=min<size-i?min:size-i-1;
+            min=min<size-j?min:size-j-1;
+            printf("%d ",a-min);
+        }
+        printf("\n");
     }
-    while(temp->next!=NULL)
-    {
-        temp=temp->next;
-    }
-    temp->next=newnode;
-    
 }
 ```
 
 # Output:
 
-<img width="1191" height="643" alt="image" src="https://github.com/user-attachments/assets/db5ced42-57e4-4e41-bb02-0cd7d3624f46" />
+<img width="1186" height="788" alt="image" src="https://github.com/user-attachments/assets/472afc47-affc-4ede-a79d-e5afae44b27b" />
 
 # Result:
 
-The program has been sucessfully created and verified.
+The program has been successfully created and verified.
+
+# EXP-04 Number Pattern (Example: Input = 5)
+
+# Aim:
+
+To print a symmetric number pattern from n to 1 and back to n.
+
+# Algorithm:
+
+1.Start
+2.Read integer n
+3.Calculate size = 2*n - 1
+4.For each row i from 0 to size-1:
+5.For each column j from 0 to size-1:
+
+# Compute:
+
+1.value = n - min(min(i, j), min(size-1-i, size-1-j))
+2.Print value
+3.Print newline after each row
+4.Stop.
+
+# Program:
+
+```
+#include<stdio.h>
+int main()
+{
+    int a;
+    scanf("%d",&a);
+    int size=2*a-1;
+    for(int i=0;i<size;i++)
+    {
+        for(int j=0;j<size;j++)
+        {
+            int min=i<j?i:j;
+            min=min<size-i?min:size-i-1;
+            min=min<size-j?min:size-j-1;
+            printf("%d ",a-min);
+        }
+        printf("\n");
+    }
+}
+```
+
+# Output:
+
+<img width="1180" height="683" alt="image" src="https://github.com/user-attachments/assets/d551ab7c-e073-48a7-af8a-0bd317ce9e64" />
+
+# Result:
+
+The program has been successfully created and verified.
+
+# EXP-05 Frequency of Digits in a String
+
+# Aim:
+
+To find and print the frequency of digits (0–9) in a given string.
+
+# Algorithm:
+
+1.Start
+2.Read input string s
+3.Initialize an array freq[10] = {0}
+4.For each character ch in string:
+If ch is a digit (0–9):
+Convert to integer: digit = ch - '0'
+Increment freq[digit]
+5.Print all elements of freq from index 0 to 9
+6.Stop.
+
+# Program:
+
+# Output:
+
+# Result:
+
+The program has been successfully created and verif
