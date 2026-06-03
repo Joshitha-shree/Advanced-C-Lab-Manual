@@ -1,143 +1,132 @@
 # Advance C Lab Manual
 
-# EXP-01 Stack Display Using Array
+# EXP-01 Delete an Element in Doubly Linked List
 
 # Aim:
 
-To write a function to display elements of a stack implemented using an array.
+To write a function to delete a node from a doubly linked list.
 
-# Algorithm
+# Algorithm:
+
 1.Start
-2.Initialize top = -1
-3.Check if top == -1
-4.If true, print "Stack is empty"
-5.Else, repeat from i = top to 0:
-6.Print stack[i]
-7.Stop.
+2.Check if head == NULL
+3.If true, print "UNDERFLOW"
+Else:
+Store head in a temporary pointer temp
+Move head = head->next
+4.If head != NULL, set head->prev = NULL
+Free temp
+Print "Node deleted"
+5.Stop.
 
 # Program:
 
 ```
-int top=-1;
-float stack[100];
+struct Node
+{
+    struct Node *prev;
+    struct Node *next;
+    int data;
+}*head;
+
+void delete()
+{
+    struct Node *temp=head;
+    if(head==NULL)
+    {
+        printf("UNDERFLOW");
+        return;
+    }
+    temp=head;
+    head=head->next;
+    if(head!=NULL)
+    {
+        head->prev=NULL;
+    }
+    free(temp);
+    printf("node deleted\n");
+    
+    
+    
+}
+```
+
+# Output:
+
+<img width="1179" height="784" alt="image" src="https://github.com/user-attachments/assets/31642fdb-25e1-41cc-9c95-1f3b9a345943" />
+
+
+# Result:
+
+The program has been successfully created and verified.
+
+# EXP-02 Traverse and Display Linked List
+
+# Aim:
+
+To write a function to traverse and display elements of a linked list.
+
+# Algorithm:
+
+1.Start
+2.Check if head == NULL
+3.If true, print "List is empty"
+Else:
+Set temp = head
+While temp != NULL:
+Print temp->data
+Move temp = temp->next
+4.Stop.
+
+# Program:
+
+```
+struct Node{
+    float data; 
+    struct Node *next;
+}*head;
+
+
 void display()
 {
-    if(top==-1)
+    struct Node *temp=head;
+    if(head==NULL)
     {
-        printf("no elements");
         return;
     }
-    for(int i=top;i>=0;i--)
+    while(temp!=NULL)
     {
-        printf("%.1f\n",stack[i]);
+        printf("%.2f\n",temp->data);
+        temp=temp->next;
     }
-}
+ 
+ 
+ 
+ }
 ```
 
 # Output:
 
-<img width="1182" height="640" alt="image" src="https://github.com/user-attachments/assets/d62feb06-c6ff-428f-97e4-ab2a9833857c" />
+<img width="1186" height="642" alt="image" src="https://github.com/user-attachments/assets/e7befd7b-1840-48ed-8a9b-12e30a2fcf7d" />
 
 # Result:
 
 The program has been successfully created and verified.
 
-# EXP-02 Queue Insertion (Enqueue) Using Array
+# EXP-03 Print Numbers from M to N in Reverse Order
 
 # Aim:
 
-To write a function to insert elements into a queue using an array.
+To write a C program to print numbers from M to N in reverse order.
 
 # Algorithm:
 
 1.Start
-2.Initialize front = -1, rear = -1
-3.When inserting an element:
-4.If rear == MAX-1, print "Queue Overflow"
-Else:
-If front == -1, set front = 0
-Increment rear
-7.Insert element at queue[rear]
-8.Stop.
-
-# Program:
-
-```
-int queue[50];
-int top=-1,rear,front;
-void enqueue(int data)
-{
-    if(front==-1)
-    {
-        front=0;
-    }
-    rear++;
-    queue[rear]=data;
-}
-```
-
-# Output:
-
-<img width="1187" height="574" alt="image" src="https://github.com/user-attachments/assets/4309a1fc-c4b7-49af-b7a2-0cd3beaf0537" />
-
-# Result:
-
-The program has been successfully created and verified.
-
-# EXP-03 Stack Push Operation Using Array
-
-# Aim:
-
-To write a function to push an element into a stack using an array.
-
-# Algorithm:
-
-1.Start
-2.Initialize top = -1
-3.When pushing an element:
-4.If top == MAX-1, print "Stack Overflow"
-Else:
-Increment top
-Assign stack[top] = element
-5.Stop.
-
-# Program:
-
-```
-int size=3,top=-1;
-char stack[100];
-void push (char data)
-{
-    if(top==size-1)
-    {
-        printf("stack is full\n");
-        return;
-    }
-    stack[++top]=data;
-}
-```
-
-# Output:
-
-<img width="1189" height="665" alt="image" src="https://github.com/user-attachments/assets/2afaa10c-d15f-434b-94eb-54256e6ed345" />
-
-# Result:
-
-The program has been successfully created and verified.
-
-# EXP-04 Addition Table Using For Loop
-
-# Aim:
-
-To write a C program to print the addition table of a given number using a for loop.
-
-# Algorithm:
-
-1.Start
-2.Read the number n
-3.Use a for loop from i = 1 to n:
-4.Print n + i
-5.Stop.
+2.Read values M and N
+3.Use a loop from i = N down to M:
+Print i
+4.Stop.
+<img width="1181" height="316" alt="image" src="https://github.com/user-attachments/assets/cefb308f-8430-4e44-b279-ac55f574695e" />
 
 # Program:
 
@@ -145,70 +134,175 @@ To write a C program to print the addition table of a given number using a for l
 #include<stdio.h>
 int main()
 {
-    int a;
-    scanf("%d",&a);
-    int sum=0;
-    for(int i=a;i<11;i++)
+    int a,b;
+    scanf("%d%d",&a,&b);
+    for(int i=b;i>=a;i--)
     {
-        sum=sum+1;
-        printf("%d ",sum);
+        printf("%d ",i);
     }
 }
 ```
 
 # Output:
 
-<img width="1178" height="350" alt="image" src="https://github.com/user-attachments/assets/217596f5-aaf5-41c5-904f-2d4e99664244" />
+<img width="1181" height="316" alt="Screenshot 2026-04-26 213923" src="https://github.com/user-attachments/assets/f7174bf0-372e-4584-9bcd-856fbb115245" />
 
 # Result:
 
-The program has been successfully created and verified.
+The program has been succesfully created and verified.
 
-# EXP-05 Queue Deletion (Dequeue) Using Array
+# EXP-04 All Basic Operations in Doubly Linked List
 
 # Aim:
 
-To write a function to delete elements from a queue using an array.
+To write functions to perform insertion, deletion, searching, and display in a doubly linked list.
 
 # Algorithm:
 
+# Insertion
+
 1.Start
-2.Check if front == -1 OR front > rear:
-If true, print "Queue Underflow"
+2.Create a new node
+3.Assign data to the node
+4.Set new->next = NULL
+If head == NULL:
+Set new->prev = NULL
+Set head = new
 Else:
-Remove element at queue[front]
-3.Increment front
-4.If front > rear:
-Reset front = rear = -1
+Traverse to last node
+Set last node’s next = new
+Set new->prev = last node
 5.Stop.
+
+# Display:
+
+1.Start
+2.Set temp = head
+While temp != NULL:
+Print temp->data
+Move temp = temp->next
+3.Stop.
+
+# Search:
+
+1.Start
+2.Set temp = head, pos = 1
+While temp != NULL:
+If temp->data == item:
+Print position
+3.Stop
+Move temp = temp->next, increment pos
+If not found, print "Item not found"
+4.Stop.
+
+# Deletion:
+
+1.Start
+2.If head == NULL:
+Print "UNDERFLOW"
+Else:
+Delete first node (same as previous delete algorithm)
+3.Stop.
 
 # Program:
 
 ```
-int queue[50];
-int front, rear;
-void dequeue()
+struct Node
 {
-    if(front==-1 && rear==-1)
-    {
-        printf("no elemets");
-    }
-    else if(front==rear)
-    {
-        front=-1;
-        rear=-1;
-    }
-    else
-    {
-        ++front;
-    }
+    struct Node *prev;
+    struct Node *next;
+    float data;
+}*head;
+
+void display()
+{
+    
+    
+    
+}
+
+void insert(float data)
+{
+    
+    
+    
+}
+
+void search(float data)
+{
+    
+    
+    
+}
+
+void delete()
+{
+    
+    
 }
 ```
 
 # Output:
 
-<img width="1190" height="765" alt="image" src="https://github.com/user-attachments/assets/89cde70a-8112-4aa3-9b08-a11c679b04d3" />
+<img width="1193" height="856" alt="image" src="https://github.com/user-attachments/assets/e39d8b57-8243-4b0b-8b65-8decff5e13a4" />
 
 # Result:
 
 The program has been successfully created and verified.
+
+# EXP-05 Insert a Node in Linked List
+
+# Aim:
+
+To write a function to insert a node into a linked list.
+
+# Algorithm:
+
+1.Start
+2.Create a new node
+3.Assign data to the node
+Set new->next = NULL
+If head == NULL:
+Set head = new
+Else:
+Traverse to last node
+Set last node’s next = new
+4.Stop.
+
+# Program:
+
+```
+struct Node{
+    int data; 
+    struct Node *next;
+}*head;
+
+
+void insert(int data)
+{
+    struct Node *temp=head;
+    struct Node *newnode=malloc(sizeof(struct Node));
+    newnode->data=data;
+    newnode->next=NULL;
+    
+    if(head==NULL)
+    {
+        head=newnode;
+        return;
+    }
+    while(temp->next!=NULL)
+    {
+        temp=temp->next;
+    }
+    temp->next=newnode;
+    
+}
+```
+
+# Output:
+
+<img width="1191" height="643" alt="image" src="https://github.com/user-attachments/assets/db5ced42-57e4-4e41-bb02-0cd7d3624f46" />
+
+# Result:
+
+The program has been sucessfully created and verified.
